@@ -1,0 +1,18 @@
+
+{% block content %}
+    <html>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+    <form action="" method="post">
+        name:<input type="text" name="title">
+        <br>
+        body:
+        <textarea name="body">
+    </textarea>
+        <br>
+        <input type="submit" value="add">
+    </form>
+    </html>
+
+{% endblock %}
