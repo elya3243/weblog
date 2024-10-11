@@ -1,5 +1,7 @@
-from django.shortcuts import render ,redirect
+from django.shortcuts import render, redirect
 from .models import Post
+
+
 # Create your views here.
 
 def post_add(request):
@@ -9,8 +11,9 @@ def post_add(request):
         if title and body:
             Post.objects.create(title=title, body=body)
             return redirect('post_add')
-    return render(request,'profile.html')
+    return render(request, 'add.html')
+
 
 def post_list(request):
     posts = Post.objects.all()
-    return render(request, 'list.html',{'posts':posts})
+    return render(request, 'list.html', {'posts': posts})
