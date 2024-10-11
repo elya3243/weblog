@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post
-
+from django.contrib import messages
 
 # Create your views here.
 
@@ -10,7 +10,8 @@ def post_add(request):
         body = request.POST.get('body')
         if title and body:
             Post.objects.create(title=title, body=body)
-            return redirect('post_add')
+            messages.success(request,'Post add successfully.')
+            return redirect('post_list')
     return render(request, 'add.html')
 
 
