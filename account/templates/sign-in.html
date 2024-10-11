@@ -14,14 +14,22 @@
     <link href="{% static 'assets/js/bundles/materialize-rtl/materialize-rtl.min.css' %}" rel="stylesheet">
     <!-- Custom Css -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
-    <link href="{% static 'assets/css/pages/extra_pages.css' %}" rel="stylesheet"/>
+{#    <link href="{% static 'assets/css/pages/extra_pages.css' %}" rel="stylesheet"/>#}
 </head>
 <body class="login-page rtl">
+{% if messages %}
+    {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <div class="limiter">
     <div class="container-login100 page-background">
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="post">
-					<span class="login100-form-logo">
+                {% csrf_token %}
+                <span class="login100-form-logo">
 						<img alt="" src="{% static 'assets/images/loading.png' %}">
 					</span>
                 <span class="login100-form-title p-b-34 p-t-27">
