@@ -1,0 +1,78 @@
+{% extends 'layout/dashboard.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>لیست </strong>پست ها</h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:void(0);">اقدام</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">اقدام دیگر</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">چیز دیگری اینجا</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="card col-3">
+                        <form action="" method="get">
+                            <div class="container-fluid row">
+                                <input type="text" placeholder="عنوان پست" name="search" class="col-md-4 input-group">
+                                <button class="btn btn-circle btn-info"><i class="material-icons">search</i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        {% for post in posts %}
+                            <div class="col-md-3">
+                                <div class="card bg-twitter border border-info">
+                                    <div class="p-3">
+                                        <div>{{ post.title }}</div>
+                                        <div>{{ post.body |truncatechars:30 }}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="container-fluid row">
+                                        <div class="col-md-6 font-9">{{ post.author.get_full_name }}</div>
+                                        <div class="col-md-6 font-9">{{ post.produce }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block location %}
+    <li class="breadcrumb-item">
+        <h4 class="page-title">پست ها</h4>
+    </li>
+    <li class="breadcrumb-item bcrumb-1">
+        <a href="{% url 'post_list' %}">
+            <i class="fas fa-home"></i>لیست پست های عمومی</a>
+    </li>
+{% endblock %}
+{% block custom_js %}
+    <style></style>
+    <script src='{% static "assets/js/table.min.js" %}'></script>
+    <!-- Custom Js -->
+    <script src='{% static "assets/js/admin.js" %}'></script>
+    <script src='{% static "assets/js/pages/tables/jquery-datatable.js" %}'></script>
+    <!-- Demo Js -->
+{% endblock %}
