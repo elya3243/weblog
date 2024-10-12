@@ -47,7 +47,7 @@
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" value="{{ post.title }}">
                                     <label class="form-label">عنوان</label>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <textarea type="text" class="form-control" name="body"></textarea>
+                                    <textarea type="text" class="form-control" name="body">{{ post.body }}</textarea>
                                     <label class="form-label">متن</label>
                                 </div>
                             </div>

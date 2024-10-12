@@ -48,10 +48,11 @@
                                     <td>
                                         <form method="POST" action="{% url 'post_delete' post_id=post.id %}">
                                             {% csrf_token %}
-                                            <button type="submit">
+                                            <button class="btn btn-danger" type="submit">
                                                 حذف
                                             </button>
                                         </form>
+                                        <a class="btn btn-warning" href="{% url 'post_edit' post_id=post.id %}">ویرایش</a>
 
                                     </td>
                                 </tr>
