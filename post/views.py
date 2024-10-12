@@ -30,6 +30,7 @@ def post_delete(request, post_id):
         return redirect('post_list')
     return render(request)
 
+
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
@@ -40,4 +41,4 @@ def post_edit(request, post_id):
             post.body = new_body
             post.save()
             return redirect('post_list', id=post_id)
-        return render(request, 'edit.html')
+    return render(request, 'edit.html', {'post': post})
