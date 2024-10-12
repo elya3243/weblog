@@ -31,6 +31,7 @@
                 <div class="body">
                     <div class="card col-3">
                         <form action="" method="get">
+                            {% csrf_token %}
                             <div class="container-fluid row">
                                 <input type="text" placeholder="عنوان پست" name="search" class="col-md-4 input-group">
                                 <button class="btn btn-circle btn-info"><i class="material-icons">search</i></button>
