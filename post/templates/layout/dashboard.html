@@ -235,7 +235,8 @@
                         </div>
                     </div>
                     <div class="profile-usertitle">
-                        <div class="sidebar-userpic-name"> امیر درخشان فر</div>
+                        <div class="sidebar-userpic-name">
+                            {% if request.user.is_authenticated %}{{ request.user }}{% endif %}</div>
                         <div class="profile-usertitle-job ">مدیر</div>
                     </div>
                 </li>
@@ -473,17 +474,17 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="breadcrumb breadcrumb-style ">
                         {% block location %}
-                        <li class="breadcrumb-item">
-                            <h4 class="page-title">پروفایل</h4>
-                        </li>
-                        <li class="breadcrumb-item bcrumb-1">
-                            <a href="../../index.html">
-                                <i class="fas fa-home"></i> خانه</a>
-                        </li>
-                        <li class="breadcrumb-item bcrumb-2">
-                            <a href="javascript:void(0);">اضافی</a>
-                        </li>
-                        <li class="breadcrumb-item active">پروفایل</li>
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">پروفایل</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="../../index.html">
+                                    <i class="fas fa-home"></i> خانه</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="javascript:void(0);">اضافی</a>
+                            </li>
+                            <li class="breadcrumb-item active">پروفایل</li>
                         {% endblock %}
                     </ul>
 
@@ -492,189 +493,189 @@
         </div>
         <!-- Your content goes here  -->
         {% block messages %}
-        {% if messages %}
-        {% for message in messages %}
-        <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>
-            {{ message }}
-        </div>
-        {% endfor %}
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         {% endblock %}
 
 
         {% block content %}
-        <div class="row clearfix">
-            <div class="col-lg-4 col-md-12">
-                <div class="card">
-                    <div class="m-b-20">
-                        <div class="contact-grid">
-                            <div class="profile-header bg-dark">
-                                <div class="user-name">امیر درخشان فر</div>
-                                <div class="name-center">مهندس نرم افزار</div>
-                            </div>
-                            <img src="../../assets/images/user/usrbig3.jpg" class="user-img" alt="">
-                            <p>
-                                456 خیابان شرقی، منطقه محوطه,
-                                <br/>نیو یورک
-                            </p>
-                            <div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card">
+                        <div class="m-b-20">
+                            <div class="contact-grid">
+                                <div class="profile-header bg-dark">
+                                    <div class="user-name">امیر درخشان فر</div>
+                                    <div class="name-center">مهندس نرم افزار</div>
+                                </div>
+                                <img src="../../assets/images/user/usrbig3.jpg" class="user-img" alt="">
+                                <p>
+                                    456 خیابان شرقی، منطقه محوطه,
+                                    <br/>نیو یورک
+                                </p>
+                                <div>
                                     <span class="phone">
                                         <i class="material-icons">phone</i>264-625-2583</span>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>565</h5>
-                                    <small>پست</small>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5>565</h5>
+                                        <small>پست</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item m-l-10">
+                                <a class="nav-link active" data-toggle="tab" href="#about">درباره</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane body active" id="about">
+                                <p class="text-default">امیر درخشان فر هستم با مدرک کارشناسی IT برنامه نویس backend با
+                                    فریمورک django و این سایت را با html, css, jquery توسعه داده ام.</p>
+                                <small class="text-muted">آدرس ایمیل: </small>
+                                <p>amirderakhshanfar251@gmail.com</p>
+                                <hr>
+                                <small class="text-muted">تلفن: </small>
+                                <p>+989130847045</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item m-l-10">
-                            <a class="nav-link active" data-toggle="tab" href="#about">درباره</a>
-                        </li>
-                    </ul>
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                        <div class="profile-tab-box">
+                            <div class="p-l-20">
+                                <ul class="nav ">
+                                    <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-toggle="tab">درباره من</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l">
+                                        <a class="nav-link" href="#usersettings" data-toggle="tab">تغییر مشخصات</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#changepassword" data-toggle="tab">تغییر رمز عبور</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane body active" id="about">
-                            <p class="text-default">امیر درخشان فر هستم با مدرک کارشناسی IT برنامه نویس backend با
-                                فریمورک django و این سایت را با html, css, jquery توسعه داده ام.</p>
-                            <small class="text-muted">آدرس ایمیل: </small>
-                            <p>amirderakhshanfar251@gmail.com</p>
-                            <hr>
-                            <small class="text-muted">تلفن: </small>
-                            <p>+989130847045</p>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="card">
-                    <div class="profile-tab-box">
-                        <div class="p-l-20">
-                            <ul class="nav ">
-                                <li class="nav-item tab-all">
-                                    <a class="nav-link active show" href="#project" data-toggle="tab">درباره من</a>
-                                </li>
-                                <li class="nav-item tab-all p-l">
-                                    <a class="nav-link" href="#usersettings" data-toggle="tab">تغییر مشخصات</a>
-                                </li>
-                                <li class="nav-item tab-all p-l-20">
-                                    <a class="nav-link" href="#changepassword" data-toggle="tab">تغییر رمز عبور</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
-                        <div class="row clearfix">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="card project_widget">
-                                    <div class="header">
-                                        <h2>درباره</h2>
-                                    </div>
-                                    <div class="body">
-                                        <div class="row">
-                                            <div class="col-md-3 col-6 b-r">
-                                                <strong>نام کامل</strong>
-                                                <br>
-                                                <p class="text-muted">امیر درخشان فر</p>
-                                            </div>
-                                            <div class="col-md-3 col-6 b-r">
-                                                <strong>موبایل</strong>
-                                                <br>
-                                                <p class="text-muted">+989130847045</p>
-                                            </div>
-                                            <div class="col-md-3 col-6 b-r">
-                                                <strong>ایمیل</strong>
-                                                <br>
-                                                <p class="text-muted">amirderakhshanfar251@gmail.com</p>
-                                            </div>
-                                            <div class="col-md-3 col-6">
-                                                <strong>موقعیت</strong>
-                                                <br>
-                                                <p class="text-muted">ایران</p>
-                                            </div>
+                        <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="card project_widget">
+                                        <div class="header">
+                                            <h2>درباره</h2>
                                         </div>
-                                        <br>
+                                        <div class="body">
+                                            <div class="row">
+                                                <div class="col-md-3 col-6 b-r">
+                                                    <strong>نام کامل</strong>
+                                                    <br>
+                                                    <p class="text-muted">امیر درخشان فر</p>
+                                                </div>
+                                                <div class="col-md-3 col-6 b-r">
+                                                    <strong>موبایل</strong>
+                                                    <br>
+                                                    <p class="text-muted">+989130847045</p>
+                                                </div>
+                                                <div class="col-md-3 col-6 b-r">
+                                                    <strong>ایمیل</strong>
+                                                    <br>
+                                                    <p class="text-muted">amirderakhshanfar251@gmail.com</p>
+                                                </div>
+                                                <div class="col-md-3 col-6">
+                                                    <strong>موقعیت</strong>
+                                                    <br>
+                                                    <p class="text-muted">ایران</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
-                        <div class="card">
-                            <div class="header">
-                                <h2>
-                                    <strong>تنظیمات</strong> حساب</h2>
-                            </div>
-                            <div class="body">
-                                <div class="row clearfix">
-                                    <div class="col-lg-6 col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="نام اصلی">
+                        <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <strong>تنظیمات</strong> حساب</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="نام اصلی">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="نام خانوادگی">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="نام خانوادگی">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="شهر">
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="شهر">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="ایمیل">
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="ایمیل">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="کشور">
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="کشور">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize"
+                                                      placeholder="خط آدرس 1"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea rows="4" class="form-control no-resize"
-                                                      placeholder="خط آدرس 1"></textarea>
-                                        </div>
+                                        <button class="btn btn-primary btn-round">ذخیره تغییرات</button>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <button class="btn btn-primary btn-round">ذخیره تغییرات</button>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="changepassword" aria-expanded="false">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <strong>تنظیمات</strong> امنیتی</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="نام کاربری">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="رمز عبور فعلی">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="رمز عبور جدید">
+                                    </div>
+                                    <button class="btn btn-info btn-round">ذخیره تغییرات</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="changepassword" aria-expanded="false">
-                        <div class="card">
-                            <div class="header">
-                                <h2>
-                                    <strong>تنظیمات</strong> امنیتی</h2>
-                            </div>
-                            <div class="body">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="نام کاربری">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="رمز عبور فعلی">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="رمز عبور جدید">
-                                </div>
-                                <button class="btn btn-info btn-round">ذخیره تغییرات</button>
-                            </div>
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
         {% endblock %}
     </div>
