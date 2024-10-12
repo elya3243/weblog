@@ -1,18 +1,175 @@
-
+{% extends 'layout/dashboard.html' %}
+{% load static %}
 {% block content %}
-    <html>
-    <form action="" method="post" novalidate>
-        {% csrf_token %}
-        {{ form.as_p }}
-    <form action="" method="post">
-        name:<input type="text" name="title">
-        <br>
-        body:
-        <textarea name="body">
-    </textarea>
-        <br>
-        <input type="submit" value="add">
-    </form>
-    </html>
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card">
+                <div class="m-b-20">
+                    <div class="contact-grid">
+                        <div class="profile-header bg-dark">
+                            <div class="user-name">{{ request.user.first_name }}</div>
+                            {#                            <div class="name-center">مهندس نرم افزار</div>#}
+                        </div>
+                        <img src="{% static 'assets/images/user/usrbig3.jpg' %}" class="user-img" alt="">
+                        <p>
+                            {{ 'آدرس کاربر' }}
+                        </p>
+                        <div>
+                            <span class="phone"><i class="material-icons">phone</i>{{ '09130847045' }}</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <h5>{{ '23' }}</h5>
+                                <small>پست</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item m-l-10">
+                        <a class="nav-link active" data-toggle="tab" href="#about">درباره</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        <p class="text-default">{{ 'متن در باره من' }}</p>
+                        <small class="text-muted">آدرس ایمیل: </small>
+                        <p>{{ request.user.email }}</p>
+                        <hr>
+                        <small class="text-muted">تلفن: </small>
+                        <p>{{ '+989130847045' }}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <div class="profile-tab-box">
+                    <div class="p-l-20">
+                        <ul class="nav ">
+                            <li class="nav-item tab-all">
+                                <a class="nav-link active show" href="#project" data-toggle="tab">درباره من</a>
+                            </li>
+                            <li class="nav-item tab-all p-l">
+                                <a class="nav-link" href="#usersettings" data-toggle="tab">تغییر مشخصات</a>
+                            </li>
+                            <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#changepassword" data-toggle="tab">تغییر رمز عبور</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2>درباره</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="row">
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>نام کامل</strong>
+                                            <br>
+                                            <p class="text-muted">{{ request.user.get_full_name }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>موبایل</strong>
+                                            <br>
+                                            <p class="text-muted">{{ '+989130847045' }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>ایمیل</strong>
+                                            <br>
+                                            <p class="text-muted">{{ request.user.email }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-6">
+                                            <strong>موقعیت</strong>
+                                            <br>
+                                            <p class="text-muted">{{ 'ایران' }}</p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>تنظیمات</strong> حساب</h2>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="نام اصلی" value="{{ request.user.first_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="نام خانوادگی" value="{{ request.user.last_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="ایمیل" value="{{ request.user.email }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize"
+                                                      placeholder="آدرس"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-primary btn-round">ذخیره تغییرات</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="changepassword" aria-expanded="false">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>تنظیمات</strong> امنیتی</h2>
+                        </div>
+                        <div class="body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="نام کاربری">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="رمز عبور فعلی">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="رمز عبور جدید">
+                            </div>
+                            <button class="btn btn-info btn-round">ذخیره تغییرات</button>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block location %}
+    <li class="breadcrumb-item">
+        <h4 class="page-title">پروفایل</h4>
+    </li>
+    <li class="breadcrumb-item bcrumb-1">
+        <a href="#">
+            <i class="fas fa-home"></i> مشخصات</a>
+    </li>
+{% endblock %}
+{% block custom_js %}
+    <script src="{% static 'assets/js/admin.js' %}"></script>
 {% endblock %}
