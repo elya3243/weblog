@@ -11,15 +11,17 @@ def post_add(request):
         title = request.POST.get('title')
         body = request.POST.get('body')
         if title and body:
-            Post.objects.create(title=title, body=body)
+            Post.objects.create(title=title, body=body , auther=request.user)
             messages.success(request, 'پست با موفقیت افزوده شد.')
             return redirect('post_list')
     return render(request, 'add.html')
 
 
+@login_required
 def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'list.html', {'posts': posts})
+    user_posts = Post.objects.filter(auther=request.user)
+    return render(request, 'list.html', {'posts': user_posts})
+
 
 
 def post_delete(request, post_id):
@@ -40,5 +42,6 @@ def post_edit(request, post_id):
             post.title = new_title
             post.body = new_body
             post.save()
-            return redirect('post_list', id=post_id)
+            messages.success(request,'پست با موفقیت ویرایش شد.')
+            return redirect('post_list')
     return render(request, 'edit.html', {'post': post})

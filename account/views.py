@@ -26,4 +26,4 @@ def user_sign_in(request):
 def user_sign_out(request):
     logout(request)
     messages.success(request, 'خروج کاربر انجام شد.')
-    return redirect('login')
+    return redirect('user_sign_out')
