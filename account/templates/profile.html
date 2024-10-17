@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <h5>{{ '23' }}</h5>
+                                <h5>{{ post_count }}</h5>
                                 <small>پست</small>
                             </div>
                         </div>
@@ -54,10 +54,11 @@
                                 <a class="nav-link active show" href="#project" data-toggle="tab">درباره من</a>
                             </li>
                             <li class="nav-item tab-all p-l">
-                                <a class="nav-link" href="#usersettings" data-toggle="tab">تغییر مشخصات</a>
+                                <a class="nav-link" href="{% url 'profile_edit' %}" data-toggle="tab">تغییر مشخصات</a>
                             </li>
                             <li class="nav-item tab-all p-l-20">
-                                <a class="nav-link" href="#changepassword" data-toggle="tab">تغییر رمز عبور</a>
+                                <a class="nav-link" href="{% url 'change_password' %}" data-toggle="tab">تغییر رمز
+                                    عبور</a>
                             </li>
                         </ul>
                     </div>
@@ -110,17 +111,20 @@
                             <div class="row clearfix">
                                 <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="نام اصلی" value="{{ request.user.first_name }}">
+                                        <input type="text" class="form-control" placeholder="نام اصلی"
+                                               value="{{ request.user.first_name }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="نام خانوادگی" value="{{ request.user.last_name }}">
+                                        <input type="text" class="form-control" placeholder="نام خانوادگی"
+                                               value="{{ request.user.last_name }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="ایمیل" value="{{ request.user.email }}">
+                                        <input type="text" class="form-control" placeholder="ایمیل"
+                                               value="{{ request.user.email }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">

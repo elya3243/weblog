@@ -11,7 +11,7 @@ def post_add(request):
         title = request.POST.get('title')
         body = request.POST.get('body')
         if title and body:
-            Post.objects.create(title=title, body=body , auther=request.user)
+            Post.objects.create(title=title, body=body , author=request.user)
             messages.success(request, 'پست با موفقیت افزوده شد.')
             return redirect('post_list')
     return render(request, 'add.html')
@@ -19,11 +19,11 @@ def post_add(request):
 
 @login_required
 def post_list(request):
-    user_posts = Post.objects.filter(auther=request.user)
+    user_posts = Post.objects.filter(author=request.user)
     return render(request, 'list.html', {'posts': user_posts})
 
 
-
+@login_required
 def post_delete(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
@@ -33,6 +33,7 @@ def post_delete(request, post_id):
     return render(request)
 
 
+@login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
@@ -45,3 +46,9 @@ def post_edit(request, post_id):
             messages.success(request,'پست با موفقیت ویرایش شد.')
             return redirect('post_list')
     return render(request, 'edit.html', {'post': post})
+
+
+@login_required
+def post_public(request):
+    posts = Post.objects.all()
+    return render(request, 'list_public.html', {'posts': posts})
